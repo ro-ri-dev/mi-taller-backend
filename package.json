@@ -1,7 +1,7 @@
 {
   "name": "mi-taller-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend de Mi Taller, una aplicación para catalogar proyectos de carpintería con fines de aprendizaje y portfolio.",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -16,5 +16,5 @@
   "keywords": [],
   "author": "Rocio Ricciardiello",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "module"
 }
