@@ -1,0 +1,20 @@
+{
+  "name": "mi-taller-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-roridev:ro-ri-dev/mi-taller-backend.git"
+  },
+  "keywords": [],
+  "author": "Rocio Ricciardiello",
+  "license": "ISC",
+  "type": "commonjs"
+}
