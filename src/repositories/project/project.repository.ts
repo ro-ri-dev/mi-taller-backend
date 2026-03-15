@@ -21,4 +21,19 @@ async function findProjectById(id: number) {
     },
   })
 }
-export { findAllProjects, createProject, findProjectById }
+
+async function updateProject(
+  id: number,
+  data: {
+    title: string
+    category: string
+  }
+) {
+  return prisma.project.update({
+    where: {
+      id,
+    },
+    data,
+  })
+}
+export { findAllProjects, createProject, findProjectById, updateProject }

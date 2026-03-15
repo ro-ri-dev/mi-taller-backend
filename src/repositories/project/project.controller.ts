@@ -3,6 +3,7 @@ import {
   getAllProjects,
   createNewProject,
   getProjectById,
+  updateExistingProject,
 } from './project.service.js'
 
 async function getProjects(req: Request, res: Response) {
@@ -59,4 +60,24 @@ async function getProject(req: Request, res: Response) {
     })
   }
 }
-export { getProjects, createProject, getProject }
+
+async function updateProject(req: Request, res: Response) {
+  try {
+    const id = Number(req.params.id)
+    const { title, category } = req.body
+
+    const project = await updateExistingProject(id, {
+      title,
+      category,
+    })
+
+    res.json(project)
+  } catch (error) {
+    console.error(error)
+
+    res.status(500).json({
+      error: 'Failed to update project',
+    })
+  }
+}
+export { getProjects, createProject, getProject, updateProject }
