@@ -1,5 +1,5 @@
 import { findHealthStatus } from '../repositories/health.repository.js'
 
-export function getHealthStatus() {
+export async function getHealthStatus() {
   return findHealthStatus()
 }
