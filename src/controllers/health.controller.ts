@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express'
 import { getHealthStatus } from '../services/health.service.js'
 
-export function healthCheck(_req: Request, res: Response) {
-  const result = getHealthStatus()
+export async function healthCheck(_req: Request, res: Response) {
+  const result = await getHealthStatus()
   res.json(result)
 }
