@@ -1,9 +1,16 @@
 import { prisma } from '../../lib/prisma.js'
 
-export async function findAllProjects() {
+async function findAllProjects() {
   return prisma.project.findMany({
     orderBy: {
       createdAt: 'desc',
     },
   })
 }
+
+async function createProject(data: { title: string; category: string }) {
+  return prisma.project.create({
+    data,
+  })
+}
+export { findAllProjects, createProject }

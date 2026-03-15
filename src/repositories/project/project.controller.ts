@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express'
-import { getAllProjects } from './project.service.js'
+import { getAllProjects, createNewProject } from './project.service.js'
 
-export async function getProjects(req: Request, res: Response) {
+async function getProjects(req: Request, res: Response) {
   try {
     const projects = await getAllProjects()
 
@@ -14,3 +14,22 @@ export async function getProjects(req: Request, res: Response) {
     })
   }
 }
+async function createProject(req: Request, res: Response) {
+  try {
+    const { title, category } = req.body
+
+    const project = await createNewProject({
+      title,
+      category,
+    })
+
+    res.status(201).json(project)
+  } catch (error) {
+    console.error(error)
+
+    res.status(500).json({
+      error: 'Failed to create project',
+    })
+  }
+}
+export { getProjects, createProject }
