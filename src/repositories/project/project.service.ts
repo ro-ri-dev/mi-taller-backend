@@ -1,5 +1,11 @@
-import { findAllProjects } from './project.repository.js'
+import { findAllProjects, createProject } from './project.repository.js'
 
-export async function getAllProjects() {
+async function getAllProjects() {
   return findAllProjects()
 }
+
+async function createNewProject(data: { title: string; category: string }) {
+  return createProject(data)
+}
+
+export { getAllProjects, createNewProject }
