@@ -13,4 +13,12 @@ async function createProject(data: { title: string; category: string }) {
     data,
   })
 }
-export { findAllProjects, createProject }
+
+async function findProjectById(id: number) {
+  return prisma.project.findUnique({
+    where: {
+      id,
+    },
+  })
+}
+export { findAllProjects, createProject, findProjectById }
