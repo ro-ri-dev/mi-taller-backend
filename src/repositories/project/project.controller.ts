@@ -4,6 +4,7 @@ import {
   createNewProject,
   getProjectById,
   updateExistingProject,
+  deleteExistingProject,
 } from './project.service.js'
 
 async function getProjects(req: Request, res: Response) {
@@ -80,4 +81,23 @@ async function updateProject(req: Request, res: Response) {
     })
   }
 }
-export { getProjects, createProject, getProject, updateProject }
+
+async function deleteProject(req: Request, res: Response) {
+  try {
+    const id = Number(req.params.id)
+
+    await deleteExistingProject(id)
+
+    res.json({
+      message: 'Project deleted',
+    })
+  } catch (error) {
+    console.error(error)
+
+    res.status(500).json({
+      error: 'Failed to delete project',
+    })
+  }
+}
+
+export { getProjects, createProject, getProject, updateProject, deleteProject }

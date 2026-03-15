@@ -3,6 +3,7 @@ import {
   createProject,
   findProjectById,
   updateProject,
+  deleteProject,
 } from './project.repository.js'
 
 async function getAllProjects() {
@@ -26,9 +27,14 @@ async function updateExistingProject(
 ) {
   return updateProject(id, data)
 }
+
+async function deleteExistingProject(id: number) {
+  return deleteProject(id)
+}
 export {
   getAllProjects,
   createNewProject,
   getProjectById,
   updateExistingProject,
+  deleteExistingProject,
 }

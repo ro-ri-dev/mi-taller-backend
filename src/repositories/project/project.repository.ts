@@ -36,4 +36,17 @@ async function updateProject(
     data,
   })
 }
-export { findAllProjects, createProject, findProjectById, updateProject }
+async function deleteProject(id: number) {
+  return prisma.project.delete({
+    where: {
+      id,
+    },
+  })
+}
+export {
+  findAllProjects,
+  createProject,
+  findProjectById,
+  updateProject,
+  deleteProject,
+}
