@@ -41,30 +41,56 @@ service
 ↓
 repository
 ↓
+Prisma Client
+↓
 database
 ```
 
 ## Responsabilidades
 
-**router**
+### router
 
 Define las rutas de la API y conecta cada endpoint con su controller.
 
-**controller**
+### controller
 
 Recibe las peticiones HTTP y transforma la respuesta en formato HTTP (JSON, status codes, etc.).
 
-**service**
+### service
 
 Contiene la lógica de negocio de la aplicación.
 
-**repository**
+### repository
 
 Gestiona el acceso a los datos utilizando Prisma ORM.
 
-**database**
+### database
 
 Persistencia mediante SQLite.
+
+---
+
+# Estructura del proyecto
+
+```
+src
+├─ repositories
+│  └─ project
+│      ├─ project.repository.ts
+│      ├─ project.service.ts
+│      ├─ project.controller.ts
+│      └─ project.routes.ts
+├─ routes
+│  └─ index.ts
+├─ lib
+│  └─ prisma.ts
+├─ app.ts
+└─ server.ts
+
+prisma
+├─ schema.prisma
+└─ migrations
+```
 
 ---
 
@@ -72,15 +98,13 @@ Persistencia mediante SQLite.
 
 El acceso a la base de datos se realiza mediante **Prisma ORM**.
 
-La aplicación utiliza la siguiente cadena de acceso a datos:
+Cadena de acceso a datos:
 
-```
-Prisma Client
-↓
-SQLite adapter (better-sqlite3)
-↓
+Prisma Client  
+↓  
+SQLite adapter (better-sqlite3)  
+↓  
 SQLite database
-```
 
 Existe un **cliente Prisma único** centralizado en:
 
@@ -166,6 +190,33 @@ Este endpoint se utiliza para verificar que:
 
 ---
 
+# API implementada
+
+Actualmente la API dispone de un CRUD básico para la entidad **Project**.
+
+Endpoints disponibles:
+
+```
+GET     /projects
+GET     /projects/:id
+POST    /projects
+PUT     /projects/:id
+DELETE  /projects/:id
+```
+
+Ejemplo de respuesta:
+
+```
+{
+  "id": 1,
+  "title": "Cocina roble",
+  "category": "kitchen",
+  "createdAt": "2026-03-15T17:03:06.773Z"
+}
+```
+
+---
+
 # Flujo de trabajo con Git
 
 El proyecto utiliza un flujo basado en ramas:
@@ -177,8 +228,8 @@ feature/*
 ```
 
 - **main** → estado estable del backend
-- **develop** → integración de features
-- **feature/** → desarrollo de funcionalidades aisladas
+- **develop** → integración de funcionalidades
+- **feature/** → desarrollo de cada endpoint o mejora
 
 ---
 
@@ -209,11 +260,4 @@ Infraestructura backend funcional:
 - sistema de migraciones operativo
 - cliente Prisma centralizado
 - endpoint `/health` funcional
-
-El siguiente paso del proyecto es implementar los primeros endpoints reales de dominio, comenzando por:
-
-```
-GET /projects
-```
-
-para consultar proyectos almacenados en la base de datos.
+- CRUD completo para `Project` implementado
