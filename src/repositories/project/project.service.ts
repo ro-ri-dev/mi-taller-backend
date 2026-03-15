@@ -2,6 +2,7 @@ import {
   findAllProjects,
   createProject,
   findProjectById,
+  updateProject,
 } from './project.repository.js'
 
 async function getAllProjects() {
@@ -16,4 +17,18 @@ async function getProjectById(id: number) {
   return findProjectById(id)
 }
 
-export { getAllProjects, createNewProject, getProjectById }
+async function updateExistingProject(
+  id: number,
+  data: {
+    title: string
+    category: string
+  }
+) {
+  return updateProject(id, data)
+}
+export {
+  getAllProjects,
+  createNewProject,
+  getProjectById,
+  updateExistingProject,
+}
