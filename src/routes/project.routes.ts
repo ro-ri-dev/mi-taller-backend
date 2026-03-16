@@ -5,7 +5,7 @@ import {
   getProject,
   updateProject,
   deleteProject,
-} from './project.controller.js'
+} from '../controllers/project.controller.js'
 
 const router = Router()
 

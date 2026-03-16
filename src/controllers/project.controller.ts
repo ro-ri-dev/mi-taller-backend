@@ -5,7 +5,7 @@ import {
   getProjectById,
   updateExistingProject,
   deleteExistingProject,
-} from './project.service.js'
+} from '../services/project.service.js'
 
 async function getProjects(req: Request, res: Response) {
   try {
