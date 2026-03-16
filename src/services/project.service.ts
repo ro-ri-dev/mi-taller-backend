@@ -4,7 +4,7 @@ import {
   findProjectById,
   updateProject,
   deleteProject,
-} from './project.repository.js'
+} from '../repositories/project.repository.js'
 
 async function getAllProjects() {
   return findAllProjects()

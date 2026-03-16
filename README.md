@@ -74,22 +74,19 @@ Persistencia mediante SQLite.
 
 ```
 src
-├─ repositories
-│  └─ project
-│      ├─ project.repository.ts
-│      ├─ project.service.ts
-│      ├─ project.controller.ts
-│      └─ project.routes.ts
-├─ routes
-│  └─ index.ts
-├─ lib
+├─ routes/
+│  ├─ index.ts
+│  └─ project.routes.ts
+├─ controllers/
+│  └─ project.controller.ts
+├─ services/
+│  └─ project.service.ts
+├─ repositories/
+│  └─ project.repository.ts
+├─ lib/
 │  └─ prisma.ts
 ├─ app.ts
 └─ server.ts
-
-prisma
-├─ schema.prisma
-└─ migrations
 ```
 
 ---
@@ -159,24 +156,18 @@ Esto permite reconstruir la base de datos desde el historial de cambios.
 
 ---
 
-# Flujo actual de una petición
-
-Ejemplo con el endpoint de salud del sistema:
-
-```
-GET /health
-```
+# Flujo interno de una petición
 
 Flujo interno:
 
 ```
-router
+routes
 ↓
-controller
+controllers
 ↓
-service
+services
 ↓
-repository
+repositories
 ↓
 Prisma Client
 ↓
